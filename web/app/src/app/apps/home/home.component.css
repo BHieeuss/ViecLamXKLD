@@ -1,0 +1,146 @@
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .recent-blogs {
+    text-align: center;
+  }
+  
+  .recent-blogs h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .intro-text {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 40px;
+  }
+  
+  .blogs-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .whats-new {
+    width: 30%;
+    text-align: left;
+  }
+  
+  .whats-new h3 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .whats-new p {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .blogs-list {
+    width: 65%;
+  }
+  
+  .blog-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+  }
+  
+  .blog-date {
+    width: 20%;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .blog-content {
+    width: 60%;
+  }
+  
+  .blog-content h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .blog-content p {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .blog-link {
+    width: 20%;
+    text-align: right;
+  }
+  
+  .blog-link a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .blog-link a:hover {
+    text-decoration: underline;
+  }
+  /* Responsive cho máy tính bảng (max-width: 768px) */
+@media (max-width: 768px) {
+  .blogs-grid {
+    flex-direction: column; /* Chuyển sang bố cục cột trên màn hình nhỏ */
+    align-items: center;
+  }
+
+  .whats-new,
+  .blogs-list {
+    width: 100%; /* Đảm bảo cả hai khối chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa văn bản */
+    margin-bottom: 30px;
+  }
+
+  .blog-item {
+    flex-direction: column; /* Sắp xếp các blog theo chiều dọc */
+    text-align: center;
+  }
+
+  .blog-date,
+  .blog-content,
+  .blog-link {
+    width: 100%; /* Mỗi phần tử chiếm 100% chiều rộng */
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 10px;
+  }
+}
+
+/* Responsive cho điện thoại (max-width: 768px) */
+@media (max-width: 768px) {
+  .blogs-grid {
+    flex-direction: column; /* Chuyển từ hàng ngang thành cột */
+    align-items: center; /* Căn giữa các mục */
+  }
+
+  .whats-new {
+    width: 100%; /* Đảm bảo mục "Tin tức mới!" chiếm toàn bộ chiều rộng */
+    margin-bottom: 20px; /* Tạo khoảng cách giữa "Tin tức mới" và phần danh sách blog */
+    text-align: center; /* Căn giữa nội dung */
+  }
+
+  .blogs-list {
+    width: 100%; /* Đảm bảo phần danh sách blog chiếm toàn bộ chiều rộng */
+  }
+
+  .blog-item {
+    flex-direction: column; /* Sắp xếp các mục blog theo cột */
+    text-align: center; /* Căn giữa nội dung */
+  }
+
+  .blog-date,
+  .blog-content,
+  .blog-link {
+    width: 100%; /* Mỗi phần tử chiếm 100% chiều rộng */
+    margin-bottom: 10px; /* Tạo khoảng cách giữa các phần tử */
+  }
+}

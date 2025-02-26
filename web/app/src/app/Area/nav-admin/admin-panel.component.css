@@ -1,0 +1,39 @@
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+}
+
+.content-fullscreen {
+  flex-grow: 1; /* Để nội dung chiếm hết không gian còn lại */
+  width: 100%; /* Chiếm toàn bộ chiều rộng */
+  background-color: #ffffff; /* Màu nền cho nội dung */
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  border-right: 1px solid #ffffff;
+}
+
+.mat-toolbar {
+  width: 100%;
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: #ffffff;
+}
+
+.menu-button {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.menu-button:hover, .menu-button:focus {
+  background: transparent; 
+  outline: none; 
+  box-shadow: none; 
+}
