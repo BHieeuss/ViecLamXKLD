@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using OfficeOpenXml.Drawing;
 using ViecLam.Infrastructure.Context;
 
 namespace ViecLam.Presentation.Actions
@@ -20,7 +21,7 @@ namespace ViecLam.Presentation.Actions
         public async Task<IActionResult> UpdateExcel()
         {
             // Lấy dữ liệu từ bảng học viên có Id = 1
-            var hocVien = await _context.HocVien.FirstOrDefaultAsync(hv => hv.Id == 1);
+            var hocVien = await _context.ThongTinHocViens.FirstOrDefaultAsync(hv => hv.Id == 1);
 
             if (hocVien == null)
             {
@@ -40,8 +41,8 @@ namespace ViecLam.Presentation.Actions
                     var worksheet = package.Workbook.Worksheets[0];
 
                     // Thêm hoặc cập nhật dữ liệu vào các ô
-                    worksheet.Cells["B3"].Value = hocVien.HoTen; // Tên học viên
-
+                    worksheet.Cells["B3"].Value = hocVien.HoTen;
+                    ((ExcelShape)worksheet.Drawings["Shape 22"]).Text = "✓";
 
                     // Lưu lại thay đổi
                     package.Save();

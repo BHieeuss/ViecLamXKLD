@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
-using System.Threading.Tasks;
-using ViecLam.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace ViecLam.Application.Contracts.Persistances
 {
@@ -9,6 +8,8 @@ namespace ViecLam.Application.Contracts.Persistances
     {
         Task<T> AddAsync(T entity);
         Task<T?> GetByIdAsync(object id);
+        Task<T?> FindByIdAsync(object id, bool isTracking = false, CancellationToken cancellationToken = default);
+        Task<T?> FindSingleAsync(Expression<Func<T, bool>> predicate, bool isTracking = false, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties);
         Task DeleteAsync(object id);
         Task<IEnumerable<T>> GetAllAsync();
         Task UpdateAsync(T entity);

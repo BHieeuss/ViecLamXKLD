@@ -64,6 +64,32 @@ h6 .japanese-text {
     margin: 0;
     color: #666;
 }
+.icon-wrapper {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.icon-wrapper i {
+    color: red;
+    font-size: 28px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.right-text {
+    flex: 1;
+}
 
 /* Ẩn nút "Xem thêm" khi các bước đã hiển thị */
 #moreSteps.show + .text-center button {

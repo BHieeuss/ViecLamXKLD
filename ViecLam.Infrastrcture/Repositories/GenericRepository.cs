@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Infrastructure.Context;
 
@@ -52,6 +53,29 @@ namespace ViecLam.Infrastructure.Repositories
                 throw;
             }
         }
+
+        public async Task<T?> FindByIdAsync(object id, bool isTracking = false, CancellationToken cancellationToken = default)
+        {
+            var query = dbContext.Set<T>().AsQueryable();
+            query = isTracking ? query : query.AsNoTracking();
+
+            var keyName = dbContext.Model.FindEntityType(typeof(T))?.FindPrimaryKey()?.Properties.First().Name;
+            var result = await query.FirstOrDefaultAsync(x => EF.Property<object>(x, keyName).Equals(id), cancellationToken);
+            return result;
+        }
+
+        public async Task<T?> FindSingleAsync(Expression<Func<T, bool>> predicate, bool isTracking = false, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includeProperties)
+        {
+            var query = dbContext.Set<T>().AsQueryable();
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            query = isTracking ? query : query.AsNoTracking();
+            var result = predicate is not null ? await query.FirstOrDefaultAsync(predicate, cancellationToken) : await query.FirstOrDefaultAsync(cancellationToken);
+            return result;
+        }
+
 
         public async Task<IEnumerable<T>> GetAllAsync()  
         {
