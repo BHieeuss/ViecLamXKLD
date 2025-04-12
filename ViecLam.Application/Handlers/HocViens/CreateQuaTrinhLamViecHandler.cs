@@ -28,13 +28,13 @@ namespace ViecLam.Application.Handlers.HocViens
             try
             {            
                 var quaTrinhLamViec = new QuaTrinhLamViec
-                {
-                    HocVienId = request.HocVienId,
-                    TuNgay = request.TuNgay,
-                    DenNgay = request.DenNgay,
-                    TenCongTy = request.TenCongTy,
-                    NoiDungCongViec = request.NoiDungCongViec
-                };
+                //{
+                //    HocVienId = request.HocVienId,
+                //    TuNgay = request.TuNgay,
+                //    DenNgay = request.DenNgay,
+                //    TenCongTy = request.TenCongTy,
+                //    NoiDungCongViec = request.NoiDungCongViec
+                //};
 
                 await quaTrinhLamViecRepository.AddAsync(quaTrinhLamViec);
 
