@@ -1,0 +1,16 @@
+name: vieclam
+networks:
+  laravel:
+  app-network:
+    driver: bridge
+  external_network:
+    external: true
+
+services:
+  app:
+    image: bhieeus/bhieeus:vieclam
+    #pull_policy: always
+    ports:
+      - "2001:80"
+    networks:
+      - app-network
