@@ -843,7 +843,7 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: url(/assets/images/baner-dec-left.png);
+  background-image: url('../images/baner-dec-left.png');
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -854,7 +854,7 @@ Banner Style
 
 .main-banner:before {
   content: '';
-  background-image: url(/assets/images/baner-dec-right.png);
+  background-image: url('../images/baner-dec-right.png');
   background-repeat: no-repeat;
   position: absolute;
   right: 0;
@@ -949,7 +949,7 @@ About Us Style
 }
 
 .about-us {
-  background-image: url(/assets/images/about-bg.png);
+  background-image: url('../images/about-bg.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1290,7 +1290,7 @@ contact
 
 .contact-us {
   padding: 160px 0px;
-  background-image: url(/assets/images/contact-bg.png);
+  background-image: url('../images/contact-bg.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
