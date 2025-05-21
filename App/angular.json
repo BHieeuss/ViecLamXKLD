@@ -14,6 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/app",
+            "baseHref": "/ViecLamXKLD-CleanArchiteture-Asp.Net-Angular/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -132,5 +133,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1d97299e-864f-4e0c-b1d8-cea2d334b407"
   }
 }
