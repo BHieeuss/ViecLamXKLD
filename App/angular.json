@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/app",
             "baseHref": "/ViecLamXKLD/",
+            "deployUrl": "/ViecLamXKLD/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,6 +58,8 @@
           },
           "configurations": {
             "production": {
+              "outputHashing": "all",
+            "deployUrl": "/ViecLamXKLD/",
               "budgets": [
                 {
                   "type": "initial",
@@ -83,6 +86,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+              "outputHashing": "all",
+              "deployUrl": "/ViecLamXKLD/",
               "buildTarget": "App:build:production"
             },
             "development": {
