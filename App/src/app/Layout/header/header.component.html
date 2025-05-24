@@ -1,32 +1,32 @@
-<!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <h4>Bá Nhânasd</h4>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Trang chủ</a></li>
-                        <li class="scroll-to-section"><a href="#about">Về chúng tôi</a></li>
-                        <li class="scroll-to-section"><a href="#services">Quy trình</a></li>
-                        <li class="scroll-to-section"><a href="#portfolio">Đơn hàng</a></li>
-                        <li class="scroll-to-section"><a href="#blog">Danh sách đơn hàng</a></li>
-                        <li class="scroll-to-section">
-                            <div class="main-red-button"><a href="#contact">Liên hệ</a></div>
-                        </li>
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- Logo -->
+          <a routerLink="/" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <img src="https://placehold.co/40x40?text=🈶&font=roboto" alt="Logo" style="width: 50px; height: 50px;" />
+            <h4 class="">SEI<span>KI</span></h4>
+          </a>
+
+          <!-- Menu -->
+          <ul class="nav" [ngClass]="{ 'open': isMenuOpen }">
+            <li><a href="#top" (click)="scrollToSection($event)">Trang chủ</a></li>
+            <li><a href="#about" (click)="scrollToSection($event)">Về chúng tôi</a></li>
+            <li><a href="#services" (click)="scrollToSection($event)">Quy trình</a></li>
+            <li><a href="#portfolio" (click)="scrollToSection($event)">Đơn hàng</a></li>
+            <li><a href="#blog" (click)="scrollToSection($event)">Danh sách đơn hàng</a></li>
+            <li><a href="#contact" class="main-red-button" (click)="scrollToSection($event)"
+                style="background-color: #fe3f40;">Liên hệ</a></li>
+          </ul>
+
+          <!-- Toggle button for mobile -->
+          <a class="menu-trigger" [class.active]="isMenuOpen" (click)="toggleMenu()">
+            <span>Menu</span>
+          </a>
+
+        </nav>
+      </div>
     </div>
+  </div>
 </header>
-<!-- ***** Header Area End ***** -->

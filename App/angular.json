@@ -37,16 +37,14 @@
               "src/assets/css/owl.css",
               "src/assets/css/fontawesome.css",
               "src/assets/css/templatemo-space-dynamic.css",
-     
               "node_modules/bootstrap/dist/css/bootstrap.min.css" 
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/vendor/jquery/jquery.min.js",
-              "src/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/imagesloaded.js",
               "src/assets/js/owl-carousel.js",
               "src/assets/js/animation.js",
-              "src/assets/js/imagesloaded.js",
               "src/assets/js/templatemo-custom.js"
             ],
             "server": "src/main.server.ts",
@@ -122,11 +120,10 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/vendor/jquery/jquery.min.js",
-              "src/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/imagesloaded.js",
               "src/assets/js/owl-carousel.js",
               "src/assets/js/animation.js",
-              "src/assets/js/imagesloaded.js",
               "src/assets/js/templatemo-custom.js"
             ]
           }
