@@ -5,7 +5,7 @@ body {
 }
 
 /* Dark theme styles */
-body.dark-theme {
+/* body.dark-theme {
   background: #181a1b !important;
   color: #e0e0e0 !important;
 }
@@ -134,4 +134,4 @@ body.dark-theme .main-button {
 body.dark-theme .main-button:hover {
   background: #ffd54f !important;
   color: #23272a !important;
-}
+} */

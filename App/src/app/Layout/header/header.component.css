@@ -28,7 +28,7 @@ header
 }
 
 .header-area {
-  background-color: #fafafa;
+  background-color: #fff; /* Đặt nền trắng */
   position: absolute;
   top: 0px;
   left: 0px;
