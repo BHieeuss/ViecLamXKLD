@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -35,30 +35,39 @@ import { NgClass } from '@angular/common';
   standalone: true,
   imports: [NgClass],
 })
-export class ThemeToggleComponent {
+export class ThemeToggleComponent implements OnInit {
   isDark = false;
 
-  constructor(private renderer: Renderer2) {
-    // Chỉ chạy trên trình duyệt (browser), tránh lỗi SSR
+  constructor(private renderer: Renderer2) {}
+
+  ngOnInit(): void {
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') {
+      const stored = localStorage.getItem('theme');
+      if (stored) {
+        this.isDark = stored === 'dark';
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.isDark = true;
-        this.renderer.addClass(document.body, 'dark-theme');
       }
     }
+    this.updateBodyClass();
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.isDark = !this.isDark;
-    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-      if (this.isDark) {
-        this.renderer.addClass(document.body, 'dark-theme');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        this.renderer.removeClass(document.body, 'dark-theme');
-        localStorage.setItem('theme', 'light');
-      }
+    this.updateBodyClass();
+  }
+
+  private updateBodyClass(): void {
+    if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+      return;
+    }
+    if (this.isDark) {
+      this.renderer.addClass(document.body, 'dark-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      this.renderer.removeClass(document.body, 'dark-theme');
+      localStorage.setItem('theme', 'light');
     }
   }
 }
+
