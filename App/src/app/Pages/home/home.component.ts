@@ -1,20 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { BannerComponent } from '../../Layout/banner/banner.component';
 import { CommonModule } from '@angular/common';
-import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
 import { ApiService } from '../../api.service';
-import { LazyLoadDirective } from '../../shared/lazy-load.directive';
+import { AOSService } from '../../shared/aos.service';
+import { LazySectionComponent } from '../../shared/lazy-section.component';
+import { AssetPreloadService } from '../../shared/asset-preload.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BannerComponent, CommonModule, NgxChartsModule, LazyLoadDirective],
+  imports: [BannerComponent, CommonModule, LazySectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
-  constructor(private api: ApiService) {}
-  ngOnInit(): void {}
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  constructor(
+    private api: ApiService,
+    public aosService: AOSService,
+    private assetPreloadService: AssetPreloadService
+  ) {}
+  ngOnInit(): void {
+    // Preload critical assets
+    this.assetPreloadService.preloadImages([
+      'assets/images/portfolio-image.png',
+      'assets/images/big-blog-thumb.jpg',
+      'assets/images/blog-thumb-01.jpg',
+      'assets/images/blog-dec.png',
+      'assets/images/contact-decoration.png',
+    ]);
+
+    // Initialize AOS with custom settings
+    this.aosService.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true,
+      mirror: false,
+      offset: 100,
+      delay: 0,
+    });
+  }
+
+  ngAfterViewInit(): void {
+    // Refresh AOS after view initialization
+    setTimeout(() => {
+      this.aosService.refresh();
+    }, 100);
+  }
+
+  ngOnDestroy(): void {
+    // Cleanup if needed
+  }
 
   // Gọi hàm để tải file Excel
   downloadExcelFile() {
@@ -33,86 +68,4 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-  steps = [
-    {
-      title: 'Tìm hiểu, tư vấn đơn hàng',
-      description: 'Cán bộ tư vấn',
-      icon: 'bi-search',
-      color: '#ff6b6b',
-    },
-    {
-      title: 'Kiểm tra sức khỏe',
-      description: 'Bệnh viện theo chỉ định',
-      icon: 'bi-heart-pulse',
-      color: '#ff9f43',
-    },
-    {
-      title: 'Phỏng vấn thi tuyển',
-      description: 'Tham gia phỏng vấn',
-      icon: 'bi-clipboard-check',
-      color: '#1dd1a1',
-    },
-    {
-      title: 'Đào tạo trước phỏng vấn',
-      description: 'Học kỹ năng',
-      icon: 'bi-person-workspace',
-      color: '#54a0ff',
-    },
-    {
-      title: 'Ký hợp đồng lao động',
-      description: 'Hoàn tất ký kết hợp đồng',
-      icon: 'bi-file-earmark-text',
-      color: '#5f27cd',
-    },
-    {
-      title: 'Đào tạo tiếng Nhật',
-      description: 'Học trong 4 - 6 tháng',
-      icon: 'bi-globe',
-      color: '#c8d6e5',
-    },
-    {
-      title: 'Xin tư cách lưu trú và visa',
-      description: 'Hoàn thiện hồ sơ',
-      icon: 'bi-passport',
-      color: '#222f3e',
-    },
-    {
-      title: 'Đào tạo chuyên môn và định hướng',
-      description: 'Chuẩn bị trước khi sang Nhật',
-      icon: 'bi-person-bounding-box',
-      color: '#ee5253',
-    },
-    {
-      title: 'Hoàn thiện thủ tục xuất cảnh',
-      description: 'Chuẩn bị xuất cảnh',
-      icon: 'bi-check-circle',
-      color: '#feca57',
-    },
-    {
-      title: 'Xuất cảnh sang Nhật',
-      description: 'Bắt đầu làm việc',
-      icon: 'bi-airplane',
-      color: '#48dbfb',
-    },
-    {
-      title: 'Gia hạn hoặc về nước',
-      description: 'Hoàn thuế Nenkin',
-      icon: 'bi-house-door',
-      color: '#00d2d3',
-    },
-  ];
-
-  chartData = this.steps.map((step, index) => ({
-    name: step.title,
-    value: index + 1,
-    extra: { color: step.color, description: step.description },
-  }));
-
-  colorScheme: Color = {
-    name: 'custom',
-    selectable: true,
-    group: ScaleType.Ordinal,
-    domain: this.steps.map((step) => step.color),
-  };
 }

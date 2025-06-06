@@ -1,137 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Custom animations for better performance */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom AOS animations */
+[data-aos="fade-up-scale"] {
+  transform: translate3d(0, 40px, 0) scale(0.9);
+  opacity: 0;
+}
+[data-aos="fade-up-scale"].aos-animate {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
+[data-aos="slide-left"] {
+  transform: translate3d(-100px, 0, 0);
+  opacity: 0;
+}
+[data-aos="slide-left"].aos-animate {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+[data-aos="slide-right"] {
+  transform: translate3d(100px, 0, 0);
+  opacity: 0;
+}
+[data-aos="slide-right"].aos-animate {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+[data-aos="zoom-in-up"] {
+  transform: translate3d(0, 40px, 0) scale(0.6);
+  opacity: 0;
+}
+[data-aos="zoom-in-up"].aos-animate {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
 body {
   transition: background 0.3s, color 0.3s;
 }
-
-/* Dark theme styles */
-/* body.dark-theme {
-  background: #181a1b !important;
-  color: #e0e0e0 !important;
-}
-
-body.dark-theme .main-banner,
-body.dark-theme .section,
-body.dark-theme .container,
-body.dark-theme .header-area,
-body.dark-theme .main-nav,
-body.dark-theme .nav,
-body.dark-theme .left-content,
-body.dark-theme .right-content,
-body.dark-theme .item,
-body.dark-theme .content,
-body.dark-theme .services,
-body.dark-theme .timeline,
-body.dark-theme .section-heading,
-body.dark-theme .about-us,
-body.dark-theme .our-services,
-body.dark-theme .our-portfolio,
-body.dark-theme .our-blog,
-body.dark-theme .contact-us {
-  background: #23272a !important;
-  color: #e0e0e0 !important;
-}
-
-body.dark-theme input,
-body.dark-theme textarea,
-body.dark-theme select {
-  background: #23272a !important;
-  color: #e0e0e0 !important;
-  border-color: #444 !important;
-}
-
-body.dark-theme .main-button,
-body.dark-theme .btn,
-body.dark-theme button {
-  background: #444 !important;
-  color: #fff !important;
-  border-color: #666 !important;
-}
-
-body.dark-theme .main-button:hover,
-body.dark-theme .btn:hover,
-body.dark-theme button:hover {
-  background: #666 !important;
-  color: #fff !important;
-}
-
-body.dark-theme .timeline-step .content {
-  background: #23272a !important;
-  color: #e0e0e0 !important;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-theme .icon-wrapper {
-  background: #23272a !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-theme .section-heading h2,
-body.dark-theme h2,
-body.dark-theme h4,
-body.dark-theme h5 {
-  color: #fff !important;
-}
-
-body.dark-theme .navbar,
-body.dark-theme .header-area {
-  background: #23272a !important;
-}
-
-body.dark-theme .nav li a,
-body.dark-theme .main-nav .nav li a {
-  color: #e0e0e0 !important;
-}
-
-body.dark-theme .nav li a.active,
-body.dark-theme .main-nav .nav li a.active {
-  color: #fbc02d !important;
-}
-
-body.dark-theme .main-banner .left-content,
-body.dark-theme .main-banner .right-image {
-  background: transparent !important;
-}
-
-body.dark-theme .form-control,
-body.dark-theme input,
-body.dark-theme textarea {
-  background: #23272a !important;
-  color: #e0e0e0 !important;
-  border-color: #444 !important;
-}
-
-body.dark-theme .form-control:focus,
-body.dark-theme input:focus,
-body.dark-theme textarea:focus {
-  background: #23272a !important;
-  color: #fff !important;
-  border-color: #888 !important;
-}
-
-body.dark-theme .timeline-step .icon {
-  background: #444 !important;
-  color: #fbc02d !important;
-}
-
-body.dark-theme .btn-primary {
-  background: #fbc02d !important;
-  color: #23272a !important;
-  border-color: #fbc02d !important;
-}
-
-body.dark-theme .btn-primary:hover {
-  background: #ffd54f !important;
-  color: #23272a !important;
-}
-
-body.dark-theme .main-button {
-  background: #fbc02d !important;
-  color: #23272a !important;
-  border-color: #fbc02d !important;
-}
-
-body.dark-theme .main-button:hover {
-  background: #ffd54f !important;
-  color: #23272a !important;
-} */
