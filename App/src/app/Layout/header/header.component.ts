@@ -1,6 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 
+/**
+ * Header Component
+ * Provides navigation with smooth scrolling and active section highlighting
+ * Includes SSR compatibility for server-side rendering
+ */
 @Component({
   selector: 'app-header',
   imports: [CommonModule],
@@ -8,30 +19,44 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+  // ===== PROPERTIES =====
   isMenuOpen = false;
 
+  // ===== CONSTRUCTOR =====
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  // ===== LIFECYCLE METHODS =====
   ngOnInit(): void {
-    this.onScroll();
+    if (isPlatformBrowser(this.platformId)) {
+      this.onScroll();
+    }
   }
 
+  // ===== PUBLIC METHODS =====
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
   scrollToSection(event: Event) {
     event.preventDefault();
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const targetId = (event.target as HTMLAnchorElement)
       .getAttribute('href')
       ?.substring(1);
     const target = document.getElementById(targetId!);
+
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       this.isMenuOpen = false;
     }
   }
 
+  // ===== EVENT HANDLERS =====
   @HostListener('window:scroll', [])
   onScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const scrollPos = window.pageYOffset;
     const anchors = document.querySelectorAll('.nav a');
 
